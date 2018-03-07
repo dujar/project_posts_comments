@@ -6,7 +6,13 @@ const categories = (state = {}, action ) => {
     return {
       categories: action.categories
     }
+    case actionTypes.GET_CATEGORY_POSTS:
+    return {
+      categoryPosts: action.categories
+    }
   default:
   return state
   }
 }
+
+export default categories

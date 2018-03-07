@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import Routing from './Routing'
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-      something
+      the header is here!
+      <Routing/>
+      the footer is here!
       </div>
     );
   }

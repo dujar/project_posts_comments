@@ -5,8 +5,22 @@ export const GET_POSTS = 'GET_POSTS'
 export const ADD_POST = 'ADD_POST'
 export const UPDATE_POST = 'UPDATE_POST'
 export const DELETE_POST = 'DELETE_POST'
+export const GET_POST = 'GET_POST'
 
 
+export function getPost(post){
+  return {
+    type: GET_POST,
+    post
+  }
+}
+
+export function getPostAsync(postId){
+  return dispatch => {
+    axiosInstance.get(`/posts/${postId}`)
+      .then(resp => dispatch(getPost(resp.data)))
+  }
+}
 export function votePostAsync(vote,postId){
   return dispatch => {
     axiosInstance.put(`/posts/${postId}`,{
@@ -55,7 +69,7 @@ export function getPosts(posts){
 
 export function getPostsAsync(){
   return dispatch=> {
-    axiosInstance.get(`/posts`)
+    axiosInstance.get('/posts')
       .then(resp => dispatch(getPosts(resp.data)))
   }
 }

@@ -2,7 +2,8 @@ export {
   GET_POSTS,
   ADD_POST,
   DELETE_POST,
-  UPDATE_POST
+  UPDATE_POST,
+  GET_POST
 
 } from './posts'
 
@@ -15,5 +16,6 @@ export {
 } from './comments'
 
 export {
-  GET_CATEGORIES
+  GET_CATEGORIES,
+  GET_CATEGORY_POSTS
 } from './categories'
