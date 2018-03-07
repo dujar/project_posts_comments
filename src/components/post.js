@@ -3,6 +3,7 @@ import ReactLoading from 'react-loading';
 import styled from 'styled-components';
 import {withRouter} from 'react-router-dom'
 import CRUDbuttons from './CRUDbuttons'
+import HandlePostForm from '../containers/handlePostForm'
 
 const Div = styled.div`
   background-color: blue;
@@ -15,7 +16,7 @@ const Main = styled.div`
   flex:1;
   flex-direction: column;
   margin: 20 25 24 23;
-  height: 200px;
+  height: 300px;
   justify-content: center;
   align-items: center;
 `
@@ -39,6 +40,7 @@ const post = props => {
       <Div> {props.timestamp} </Div>
       <Div> {props.voteScore} </Div>
       <Div> {props.commentCount} </Div>
+      <HandlePostForm/>
     </Main>
   )
   } else {
