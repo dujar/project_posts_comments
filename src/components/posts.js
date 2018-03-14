@@ -8,7 +8,7 @@ const Main = styled.div`
   flex: 1;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -24,7 +24,9 @@ const posts = ({ posts }) => {
     );
   } else {
     return (
-      <ReactLoading type={'bubbles'} color={'blue'} height="667" width="375" />
+      <div>
+        Unfortunately page not found!
+      </div>
     );
   }
 };

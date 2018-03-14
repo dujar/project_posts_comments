@@ -2,31 +2,16 @@ import React from 'react';
 
 import Form from 'react-jsonschema-form';
 
-const postForm = props => {
+const commentForm = props => {
   const schema = {
-    definitions: {
-      categories: {
-        type: 'string',
-        enum: ['react','udacity','redux']
-      }
-    },
     title: props.postForm,
-    description: 'Please add a post related to the relevant category',
+    description: 'Please add a comment related to the post',
     type: 'object',
-    required: ['title', 'body', 'category', 'author'],
+    required: ['body', 'author'],
     properties: {
-      title: {
-        type: 'string',
-        title: 'Title'
-      },
       body: {
         type: 'string',
         title: 'body'
-      },
-      category: {
-        '$ref': '#/definitions/categories',
-        title: 'category',
-        default: 'react'
       },
       author: {
         type: 'string',
@@ -35,17 +20,9 @@ const postForm = props => {
     }
   };
   const uiSchema = {
-    title: {
-      'ui:autofocus': true,
-      'ui:emptyValue': ''
-    },
     body: {
       'ui:widget': 'textarea',
       'ui:title': 'body',
-      'ui:description': ''
-    },
-    category: {
-      'ui:title': 'category',
       'ui:description': ''
     },
     author: {
@@ -54,10 +31,8 @@ const postForm = props => {
     }
   };
   let formData = {
-    title: 'title of post',
-    body: 'body of post',
-    category: 'react',
-    author: 'author of post'
+    body: 'body of comment',
+    author: 'author of comment'
   };
   if(props.formData){
     formData = {...props.formData}
@@ -79,4 +54,4 @@ const postForm = props => {
   );
 };
 
-export default postForm
+export default commentForm

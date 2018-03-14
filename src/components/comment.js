@@ -14,21 +14,27 @@ const Main = styled.div`
   display: flex;
   flex:1;
   flex-direction: column;
-  margin: 20 25 24 23;
+  margin: 20px 20px 20px 20px;
   height: 200px;
   justify-content: center;
   align-items: center;
+  border: 1px solid black;
+  border-radius: 5px;
 `
 const comment = props => {
 
   if(props.body){
   return (
     <Main>
-      <CRUDbuttons/>
-      <Div> {props.body} </Div>
-      <Div> {props.author} </Div>
-      <Div> {props.timestamp} </Div>
-      <Div> {props.voteScore} </Div>
+      <CRUDbuttons
+      handleLike={(vote) => props.handleLike(props.id,vote,props.parentId)}
+      handleDelete={() => props.handleDelete(props.id,props.parentId)}
+      handleEdit={props.handleEdit}
+      />
+      <Div> body: {props.body} </Div>
+      <Div> author: {props.author} </Div>
+      <Div> date: {props.timestamp} </Div>
+      <Div> vote Score: {props.voteScore} </Div>
 
     </Main>
   )

@@ -16,14 +16,23 @@ const Main = styled.div`
 const comments = props => {
   if (props.comments) {
     return props.comments.map(comment => {
-
-      if(!comment.deleted && !comment.parentDeleted && props.postId === comment.parentId){
-      return (
-        <Main>
-          <Comment {...comment} key={comment.id}/>
-        </Main>
-      );
-    }
+      if (
+        !comment.deleted &&
+        !comment.parentDeleted &&
+        props.postId === comment.parentId
+      ) {
+        return (
+          <Main>
+            <Comment
+              {...comment}
+              key={comment.id}
+              handleLike={props.handleLike}
+              handleDelete={props.handleDelete}
+              handleEdit={() => props.handleEdit(comment)}
+            />
+          </Main>
+        );
+      }
     });
   } else {
     return (

@@ -1,14 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getCategoryPostsAsync } from '../actions/categories';
+import styled from 'styled-components'
 
-const withPost = (categoryName) => Component => {
+const Main = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+`;
+
+const withCategory = (categoryName) => Component => {
   class EnhancedComponent extends React.Component {
     componentWillMount() {
       this.props.getCategoryPosts(categoryName);
     }
     render() {
-      return <Component {...this.props} />;
+      return (
+        <Main>
+          <Component {...this.props} />;
+        </Main>
+      )
+
     }
   }
 
@@ -25,4 +40,4 @@ const withPost = (categoryName) => Component => {
   return connect(mapStateToProps, mapDispatchToProps)(EnhancedComponent);
 };
 
-export default withPost;
+export default withCategory;
