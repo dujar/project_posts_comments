@@ -24,13 +24,13 @@ class HandlePost extends React.Component {
     this.props.history.push(`/${this.props.post.category}/${parentId}`);
   };
   handleCommentDelete = (id,parentId) => {
-    console.log('comment id:', id);
+    // console.log('comment id:', id);
     axiosInstance
       .delete(`/comments/${id}`)
       .then(resp => this.props.history.push(`/${this.props.post.category}/${parentId}`));
   };
   handleCommentEdit = comment => {
-    console.log('edit comment:', comment);
+    // console.log('edit comment:', comment);
     this.setState({
       editComment: true,
       commentSelected: comment
@@ -43,7 +43,7 @@ class HandlePost extends React.Component {
     this.props.history.push(`/${this.props.post.category}/${id}`);
   };
   handlePostDelete = id => {
-    console.log('id:', id);
+    // console.log('id:', id);
     axiosInstance
       .delete(`/posts/${id}`)
       .then(resp => this.props.history.push('/'));
@@ -51,14 +51,14 @@ class HandlePost extends React.Component {
 
   handlePostEdit = e => {
     e.preventDefault();
-    console.log('edit:', e);
+    // console.log('edit:', e);
     this.setState({
       editPost: true
     });
   };
 
   handleBackDropClick = (type) => {
-    console.log(type)
+    // console.log(type)
     if(type === 'post'){
       this.setState({
         editPost: false
@@ -84,7 +84,7 @@ class HandlePost extends React.Component {
   }
 
   render() {
-    console.log('id post [HANDLEPOST]', this.props.post);
+    // console.log('id post [HANDLEPOST]', this.props.post);
     const EnhancedComments =
       this.props.post && this.props.post.commentCount > 0
         ? withComments(this.props.post.id)(comments)
@@ -110,8 +110,6 @@ class HandlePost extends React.Component {
       EnhancedCommentAdd = withModal({
         category: this.props.post.category,
         parentId: this.props.post.id
-
-
       })(
         handleCommentForm
       );

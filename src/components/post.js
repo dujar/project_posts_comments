@@ -7,9 +7,10 @@ import HandlePostForm from '../containers/handlePostForm';
 import AddCommentIcon from 'react-icons/lib/md/add-circle-outline';
 
 const Div = styled.div`
-  background-color: blue;
+  background-color: whitesmoke;
   max-width: 100%;
   min-width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 `;
 const Main = styled.div`
   display: flex;

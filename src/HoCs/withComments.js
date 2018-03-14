@@ -5,7 +5,7 @@ import { getCommentsAsync } from '../actions/comments';
 const withComments = (postId) => Component => {
   class EnhancedComponent extends React.Component {
     componentWillMount() {
-      console.log("postId", postId)
+      // console.log("postId", postId)
       if(postId){
       this.props.getComments(postId);
       }

@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 class HandleCommentForm extends React.Component {
   handleSubmit = comment => {
-    console.log('comment submitted', comment);
+    // console.log('comment submitted', comment);
     if (comment.id) {
       axiosInstance
         .put(`/comments/${comment.id}`, {
@@ -31,7 +31,7 @@ class HandleCommentForm extends React.Component {
   };
 
   handleChange = e => {
-    console.log(e);
+    // console.log(e);
   };
 
   render() {

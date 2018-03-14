@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 class HandlePostForm extends React.Component {
   handleSubmit = post => {
-    console.log('post', post);
+    // console.log('post', post);
     if (post.id) {
       axiosInstance.put(`/posts/${post.id}`, {
         title: post.title,
@@ -24,7 +24,7 @@ class HandlePostForm extends React.Component {
   };
 
   handleChange = e => {
-    console.log(e);
+    // console.log(e);
   };
 
   render() {

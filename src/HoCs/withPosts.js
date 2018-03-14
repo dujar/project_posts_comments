@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getPostsAsync } from '../actions/posts';
 
-const withPosts = Component => {
+const withPosts  = props => Component => {
   class EnhancedComponent extends React.Component {
     componentWillMount() {
       this.props.getPosts();
     }
     render() {
-      return <Component {...this.props} />;
+      return <Component {...this.props} {...props}/>;
     }
   }
 

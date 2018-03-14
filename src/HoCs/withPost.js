@@ -14,7 +14,7 @@ const Main = styled.div`
 const withPost = (categoryId, postId) => Component => {
   class EnhancedComponent extends React.Component {
     componentWillMount() {
-      console.log("props[withPost]",postId)
+      // console.log("props[withPost]",postId)
       if(categoryId){
       this.props.getPost(postId);
       }
