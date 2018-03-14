@@ -17,7 +17,7 @@ const posts = ({ posts }) => {
     return (
       <Main>
         {posts.map(post => (
-          !post.deleted?( <Post {...post} key={post.id} />) : null
+          !post.deleted? ( <Post {...post} key={post.id} />) : null
         )
       )}
       </Main>

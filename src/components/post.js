@@ -39,12 +39,13 @@ const Cat = styled(Div)`
   }
 `;
 const post = props => {
+
   if (props.title) {
     return (
       <Main
         onClick={() =>
-          props.history.location.pathname !== `/posts/${props.id}`
-            ? props.history.push(`/posts/${props.id}`)
+          props.history.location.pathname !== `/${props.category}/${props.id}`
+            ? props.history.push(`/${props.category}/${props.id}`)
             : null
         }
         location={props.location.pathname}
@@ -62,7 +63,7 @@ const post = props => {
         <Cat
           onClick={e => {
             e.stopPropagation();
-            props.history.push(`/categories/${props.category}`);
+            props.history.push(`/${props.category}`);
           }}
         >
           {' '}
@@ -81,7 +82,7 @@ const post = props => {
   } else {
     return (
       <div>
-        Oopss, it seems that the page does not exist! Probably deleted or god
+        Ooopss, it seems that the page does not exist! Probably deleted or god
         knows what!
       </div>
     );

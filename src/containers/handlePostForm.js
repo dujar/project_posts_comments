@@ -12,7 +12,7 @@ class HandlePostForm extends React.Component {
         title: post.title,
         body: post.body
       });
-      this.props.history.push(`/posts/${post.id}`, { edit: false });
+      this.props.history.push(`/${post.category}/${post.id}`);
     } else {
       axiosInstance.post('/posts', {
         ...post,

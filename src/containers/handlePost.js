@@ -21,13 +21,13 @@ class HandlePost extends React.Component {
     axiosInstance.post(`/comments/${id}`, {
       option: vote
     });
-    this.props.history.push(`/posts/${parentId}`);
+    this.props.history.push(`/${this.props.post.category}/${parentId}`);
   };
   handleCommentDelete = (id,parentId) => {
     console.log('comment id:', id);
     axiosInstance
       .delete(`/comments/${id}`)
-      .then(resp => this.props.history.push(`/posts/${parentId}`));
+      .then(resp => this.props.history.push(`/${this.props.post.category}/${parentId}`));
   };
   handleCommentEdit = comment => {
     console.log('edit comment:', comment);
@@ -40,7 +40,7 @@ class HandlePost extends React.Component {
     axiosInstance.post(`/posts/${id}`, {
       option: vote
     });
-    this.props.history.push(`/posts/${id}`);
+    this.props.history.push(`/${this.props.post.category}/${id}`);
   };
   handlePostDelete = id => {
     console.log('id:', id);
@@ -76,6 +76,8 @@ class HandlePost extends React.Component {
 
   handleAddCommentClick = (e) => {
     e.preventDefault()
+
+    console.log("add comment:",true,e)
     this.setState({
       addComment: true
     });
@@ -94,13 +96,23 @@ class HandlePost extends React.Component {
     }
     let EnhancedCommentEdit = null;
     if (this.state.editComment) {
-      EnhancedCommentEdit = withModal(this.state.commentSelected)(
+      EnhancedCommentEdit = withModal({
+        formData:this.state.commentSelected,
+        category: this.props.post.category,
+        parentId: this.props.post.id
+
+      })(
         handleCommentForm
       );
     }
     let EnhancedCommentAdd = null;
     if (this.state.addComment) {
-      EnhancedCommentAdd = withModal({parentId: this.props.post.id})(
+      EnhancedCommentAdd = withModal({
+        category: this.props.post.category,
+        parentId: this.props.post.id
+
+
+      })(
         handleCommentForm
       );
     }
@@ -137,6 +149,7 @@ class HandlePost extends React.Component {
         {this.state.addComment && (
           <EnhancedCommentAdd
             handleBackDropClick={() => this.handleBackDropClick('commentToAdd')}
+            category={this.props.post.category}
           />
         )}
         </div>

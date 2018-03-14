@@ -14,17 +14,18 @@ class HandleCommentForm extends React.Component {
           body: comment.body
         })
         .then(resp =>
-          this.props.history.push(`/posts/${comment.parentId}`, { edit: false })
+          this.props.history.push(`/${this.props.category}/${this.props.parentId}`)
         );
     } else {
       axiosInstance
         .post('/comments', {
           ...comment,
           id: uuid(),
-          timestamp: new Date().valueOf()
+          timestamp: new Date().valueOf(),
+          parentId: this.props.parentId
         })
         .then(resp =>
-          this.props.history.push(`/posts/${comment.parentId}`, { edit: false })
+          this.props.history.push(`/${this.props.category}/${this.props.parentId}`)
         );
     }
   };
@@ -40,7 +41,7 @@ class HandleCommentForm extends React.Component {
           onSubmit={this.handleSubmit.bind(this)}
           onChange={this.handleChange}
           formTitle={'Comment Form'}
-          formData={this.props}
+          formData={this.props.formData}
         />
       </div>
     );

@@ -33,18 +33,22 @@ class Routing extends React.Component {
           )
         }}
         />
-        <Route path="/categories/:category" exact render={({match}) => {
+
+        <Route path="/:category/:post_id" exact render={({match}) => {
+          const categoryId = match.params.category
+          const postId = match.params.post_id
+          console.log("/:category/:post_id",postId)
+          const EnhancedPost = withPost(categoryId,postId)(HandlePost)
+          return <EnhancedPost />
+        }}
+        />
+
+         <Route path="/:category" exact render={({match}) => {
           const categoryName = match.params.category
           const EnhancedCategory = withCategory(categoryName)(posts)
           return <EnhancedCategory/>
         }} />
-        <Route path="/posts/:id" exact render={({match}) => {
-          const postId = match.params.id
-          console.log("/posts/:id",postId)
-          const EnhancedPost = withPost(postId)(HandlePost)
-          return <EnhancedPost />
-        }}
-        />
+
         <Route path="*" render={() => {
 
           return(
